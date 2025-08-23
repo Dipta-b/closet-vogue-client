@@ -85,6 +85,12 @@ const Navbar = () => {
         <li className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize">
           Pages
         </li>
+        <NavLink
+          className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize"
+          to="/addNewProduct"
+        >
+          Add New Product
+        </NavLink>
       </ul>
 
       {/* Search & Auth Buttons */}

@@ -4,6 +4,7 @@ import Home from "../components/pages/Home";
 import SignIn from "../components/pages/SignIn";
 import Register from "../components/pages/Register";
 import SignInWithPhoneNumber from "../components/pages/signInWithPhoneNumber";
+import AddNewProduct from "../components/pages/AddNewProduct";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "signInByPhoneNumber",
         element: <SignInWithPhoneNumber></SignInWithPhoneNumber>,
+      },
+      {
+        path: "addNewProduct",
+        element: <AddNewProduct></AddNewProduct>,
       },
     ],
   },
