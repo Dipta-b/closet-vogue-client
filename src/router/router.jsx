@@ -5,6 +5,8 @@ import SignIn from "../components/pages/SignIn";
 import Register from "../components/pages/Register";
 import SignInWithPhoneNumber from "../components/pages/signInWithPhoneNumber";
 import AddNewProduct from "../components/pages/AddNewProduct";
+import AllCloset from "../components/pages/AllCloset";
+import ClosetDetailsPage from "../components/pages/ClosetDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,17 @@ const router = createBrowserRouter([
       {
         path: "addNewProduct",
         element: <AddNewProduct></AddNewProduct>,
+      },
+      {
+        path: "allCloset",
+        element: <AllCloset></AllCloset>,
+        loader: () => fetch("http://localhost:5000/closets"),
+      },
+      {
+        path: "allCloset/closets/:id",
+        element: <ClosetDetailsPage></ClosetDetailsPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/closets/${params.id}`),
       },
     ],
   },

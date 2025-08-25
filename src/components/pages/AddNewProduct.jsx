@@ -117,6 +117,19 @@ const AddNewProduct = () => {
           />
         </div>
 
+        {/*Short Description */}
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Short Description
+          </label>
+          <textarea
+            rows="4"
+            name="short-description"
+            placeholder="Short description of the product"
+            className="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300"
+          ></textarea>
+        </div>
+
         {/* Description */}
         <div>
           <label className="block text-sm font-medium mb-1">Description</label>
