@@ -14,7 +14,7 @@ const DetailsTabPage = () => {
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
           Tab content 1{/* All Closer Inside Details */}
-          {/* <AllCloset></AllCloset> */}
+          <AllCloset></AllCloset>
         </div>
 
         <input
