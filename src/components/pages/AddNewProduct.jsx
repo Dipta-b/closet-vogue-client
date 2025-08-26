@@ -141,7 +141,7 @@ const AddNewProduct = () => {
           ></textarea>
         </div>
 
-        {/* Image Upload */}
+        {/*Product Image  */}
         <div>
           <label className="block text-sm font-medium mb-1">
             Product Image
@@ -152,6 +152,19 @@ const AddNewProduct = () => {
             placeholder="product-img"
             className="block text-sm font-medium mb-1 border-2 border-dashed rounded-lg p-6 text-center text-gray-500 w-full"
           />
+        </div>
+
+        {/* Products Details */}
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Product Details
+          </label>
+          <textarea
+            rows="4"
+            name="productDetails"
+            placeholder="Brand/Reference/In Stock"
+            className="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300"
+          ></textarea>
         </div>
 
         {/* Submit Button */}

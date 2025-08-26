@@ -1,8 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { FaXTwitter } from "react-icons/fa6";
-import { ImFacebook2 } from "react-icons/im";
-import { FaDribbble } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 const OurProducts = () => {
   const [clothes, setClothes] = useState([]);

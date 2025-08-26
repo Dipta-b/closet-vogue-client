@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const DetailsTabPage = () => {
   const [closet, setCloset] = useState([]);
-  const [activeTab, setActiveTab] = useState("Description"); // default tab
+  const [activeTab, setActiveTab] = useState("Description");
 
   useEffect(() => {
     setCloset([]);
@@ -25,6 +25,10 @@ const DetailsTabPage = () => {
           onChange={() => setActiveTab("Description")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
+          <h4 className="text-4xl	text-center font-bold">Our Products</h4>
+          <p className="text-center text-sm	 font-light">
+            Best selling products
+          </p>
           Tab content 1 – {closet.length}
         </div>
 
@@ -37,6 +41,10 @@ const DetailsTabPage = () => {
           onChange={() => setActiveTab("Product Details")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
+          <h4 className="text-4xl	text-center font-bold">Our Products</h4>
+          <p className="text-center text-sm	 font-light">
+            Best selling products
+          </p>
           Tab content 2 – {closet.length}
         </div>
 
@@ -49,6 +57,10 @@ const DetailsTabPage = () => {
           onChange={() => setActiveTab("Tab Title")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
+          <h4 className="text-4xl	text-center font-bold">Our Products</h4>
+          <p className="text-center text-sm	 font-light">
+            Best selling products
+          </p>
           Tab content 3 – {closet.length}
         </div>
 
@@ -61,6 +73,10 @@ const DetailsTabPage = () => {
           onChange={() => setActiveTab("Customer Reviews")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
+          <h4 className="text-4xl	text-center font-bold">Our Products</h4>
+          <p className="text-center text-sm	 font-light">
+            Best selling products
+          </p>
           Tab content 4 – {closet.length}
         </div>
       </div>
