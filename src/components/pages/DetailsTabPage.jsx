@@ -1,53 +1,67 @@
-import AllCloset from "./AllCloset";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const DetailsTabPage = () => {
+  const [closet, setCloset] = useState([]);
+  const [activeTab, setActiveTab] = useState("Description"); // default tab
+
+  useEffect(() => {
+    setCloset([]);
+
+    axios.get("http://localhost:5000/closets").then((res) => {
+      setCloset(res.data);
+    });
+  }, [activeTab]);
+
   return (
     <div>
-      {/* name of each tab group should be unique */}
-      <div className="tabs  flex justify-center">
+      <div className="tabs flex justify-center">
         <input
           type="radio"
           name="my_tabs_2"
-          className="tab text-2xl checked:border-b-4 checked:border-red-500 checked:transition-all checked:duration-500"
+          className="tab text-2xl checked:border-b-4 checked:border-red-500"
           aria-label="Description"
-          defaultChecked
+          checked={activeTab === "Description"}
+          onChange={() => setActiveTab("Description")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 1{/* All Closer Inside Details */}
-          <AllCloset></AllCloset>
+          Tab content 1 – {closet.length}
         </div>
 
         <input
           type="radio"
           name="my_tabs_2"
-          className="tab text-2xl checked:border-b-4 checked:border-red-500 checked:transition-all checked:duration-500"
+          className="tab text-2xl checked:border-b-4 checked:border-red-500"
           aria-label="Product Details"
+          checked={activeTab === "Product Details"}
+          onChange={() => setActiveTab("Product Details")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 2{/* All Closer Inside Details */}
-          {/* <AllCloset></AllCloset> */}
+          Tab content 2 – {closet.length}
         </div>
 
         <input
           type="radio"
           name="my_tabs_2"
-          className="tab text-2xl checked:border-b-4 checked:border-red-500 checked:transition-all checked:duration-500"
+          className="tab text-2xl checked:border-b-4 checked:border-red-500"
           aria-label="Tab Title"
+          checked={activeTab === "Tab Title"}
+          onChange={() => setActiveTab("Tab Title")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 3{/* All Closer Inside Details */}
-          {/* <AllCloset></AllCloset> */}
+          Tab content 3 – {closet.length}
         </div>
 
         <input
           type="radio"
           name="my_tabs_2"
-          className="tab text-2xl checked:border-b-4 checked:border-red-500 checked:transition-all checked:duration-500"
+          className="tab text-2xl checked:border-b-4 checked:border-red-500"
           aria-label="Customer Reviews"
+          checked={activeTab === "Customer Reviews"}
+          onChange={() => setActiveTab("Customer Reviews")}
         />
         <div className="tab-content border-base-300 bg-base-100 p-10">
-          Tab content 4{/* All Closer Inside Details */}
-          {/* <AllCloset></AllCloset> */}
+          Tab content 4 – {closet.length}
         </div>
       </div>
     </div>
