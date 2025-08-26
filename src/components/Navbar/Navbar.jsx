@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/logo/logo.jpg";
-import { IoIosArrowDown, IoIosSearch } from "react-icons/io";
+import { IoIosSearch } from "react-icons/io";
 import { BsArrowRight } from "react-icons/bs";
-import { MdDashboardCustomize, MdKeyboardArrowDown } from "react-icons/md";
-import { CgIfDesign } from "react-icons/cg";
-import { FaCubesStacked } from "react-icons/fa6";
+import { MdKeyboardArrowDown } from "react-icons/md";
+
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
-  const [mobileAboutUsOpen, setMobileAboutUsOpen] = useState(false);
-  const [mobileServiceOpen, setMobileServiceOpen] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  const admin = user?.email;
+  const isAdmin = "diptabanik11@gmail.com" === admin;
 
   const handleSignOut = () => {
     signOutUser();
@@ -91,6 +91,14 @@ const Navbar = () => {
         >
           Add New Product
         </NavLink>
+        {isAdmin && (
+          <NavLink
+            className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize"
+            to="/adminPanel"
+          >
+            Admin Panel
+          </NavLink>
+        )}
       </ul>
 
       {/* Search & Auth Buttons */}

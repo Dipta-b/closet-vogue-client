@@ -1,49 +1,43 @@
 import axios from "axios";
 import React from "react";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddNewProduct = () => {
-  const addProduct = (e) => {
+const UpdateRoute = () => {
+  const closet = useLoaderData();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const handleUpdate = (e) => {
     e.preventDefault();
-
-    // Collect all values at once
     const formData = new FormData(e.target);
     const product = Object.fromEntries(formData);
-
-    axios
-      .post("http://localhost:5000/closets", product)
-      .then((result) => {
-        console.log(result.data);
-        if (result.data.acknowledged) {
-          Swal.fire({
-            title: "Product Added Successfully!",
-            text: product?.name,
-            imageUrl: product?.imageUrl,
-            imageWidth: 400,
-            imageHeight: 200,
-            imageAlt: "Custom image",
-            icon: "success",
-            confirmButtonText: "OK!",
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    axios.put(`http://localhost:5000/closets/${id}`, product).then((res) => {
+      if (res.data.modifiedCount) {
+        Swal.fire({
+          title: "Closet updated Successfully!",
+          text: "Modal with a custom image.",
+          imageUrl: product?.imageUrl,
+          imageWidth: 300,
+          imageHeight: 200,
+          imageAlt: "Custom image",
+        });
+      }
+      navigate("/adminPanel");
+    });
   };
-
   return (
     <div className="rounded-2xl p-6 max-w-3xl mx-auto p-8 shadow-base-300 bg-gray-500">
-      <h1 className="text-3xl font-bold mb-6">➕ Add New Product</h1>
+      <h1 className="text-3xl font-bold mb-6">➕ Update Product</h1>
 
       <form
-        onSubmit={addProduct}
+        onSubmit={handleUpdate}
         className="bg-gray-500 shadow-lg rounded-2xl p-6 space-y-6"
       >
         {/* Product Name */}
         <div>
           <label className="block text-sm font-medium mb-1">Product Name</label>
           <input
+            defaultValue={closet?.name}
             type="text"
             name="name"
             placeholder="Denim Jacket"
@@ -55,6 +49,7 @@ const AddNewProduct = () => {
         <div>
           <label className="block text-sm font-medium mb-1">Category</label>
           <input
+            defaultValue={closet?.category}
             type="text"
             name="category"
             placeholder="Clothing/Footwear/Accessories"
@@ -66,6 +61,7 @@ const AddNewProduct = () => {
         <div>
           <label className="block text-sm font-medium mb-1">Sub Category</label>
           <input
+            defaultValue={closet?.subCategory}
             type="text"
             name="subCategory"
             placeholder="Jacket/Dress/Shoes/Watches"
@@ -77,6 +73,7 @@ const AddNewProduct = () => {
         <div>
           <label className="block text-sm font-medium mb-1">Gender</label>
           <input
+            defaultValue={closet?.gender}
             type="text"
             name="gender"
             placeholder="Male/Female"
@@ -88,6 +85,7 @@ const AddNewProduct = () => {
         <div>
           <label className="block text-sm font-medium mb-1">Price ($)</label>
           <input
+            defaultValue={closet?.price}
             type="number"
             name="price"
             placeholder="59.99"
@@ -99,6 +97,7 @@ const AddNewProduct = () => {
         <div>
           <label className="block text-sm font-medium mb-1">Sizes</label>
           <input
+            defaultValue={closet?.sizes}
             type="text"
             name="sizes"
             placeholder="S, M, L, XL"
@@ -110,6 +109,7 @@ const AddNewProduct = () => {
         <div>
           <label className="block text-sm font-medium mb-1">Color</label>
           <input
+            defaultValue={closet?.color}
             type="text"
             name="color"
             placeholder="Blue"
@@ -124,6 +124,7 @@ const AddNewProduct = () => {
           </label>
           <textarea
             rows="4"
+            defaultValue={closet?.shortDescription}
             name="shortDescription"
             placeholder="Short description of the product"
             className="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300"
@@ -134,6 +135,7 @@ const AddNewProduct = () => {
         <div>
           <label className="block text-sm font-medium mb-1">Description</label>
           <textarea
+            defaultValue={closet?.description}
             rows="4"
             name="description"
             placeholder="Classic denim jacket with a modern fit"
@@ -147,6 +149,7 @@ const AddNewProduct = () => {
             Product Image
           </label>
           <input
+            defaultValue={closet?.imageUrl}
             type="text"
             name="imageUrl"
             placeholder="product-img"
@@ -160,6 +163,7 @@ const AddNewProduct = () => {
             Product Details
           </label>
           <textarea
+            defaultValue={closet?.productDetails}
             rows="4"
             name="productDetails"
             placeholder="Brand/Reference/In Stock"
@@ -181,4 +185,4 @@ const AddNewProduct = () => {
   );
 };
 
-export default AddNewProduct;
+export default UpdateRoute;

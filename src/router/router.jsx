@@ -7,6 +7,8 @@ import SignInWithPhoneNumber from "../components/pages/signInWithPhoneNumber";
 import AddNewProduct from "../components/pages/AddNewProduct";
 import AllCloset from "../components/pages/AllCloset";
 import ClosetDetailsPage from "../components/pages/ClosetDetailsPage";
+import AdminPanel from "../components/pages/AdminPanel";
+import UpdateRoute from "../components/pages/UpdateRoute";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,17 @@ const router = createBrowserRouter([
       {
         path: "allCloset/closets/:id",
         element: <ClosetDetailsPage></ClosetDetailsPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/closets/${params.id}`),
+      },
+      {
+        path: "adminPanel",
+        element: <AdminPanel></AdminPanel>,
+        loader: () => fetch("http://localhost:5000/closets"),
+      },
+      {
+        path: "update/:id",
+        element: <UpdateRoute></UpdateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/closets/${params.id}`),
       },
