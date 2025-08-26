@@ -52,25 +52,23 @@ const AddNewProduct = () => {
         </div>
 
         {/* Category */}
-        <div>
-          <label className="block text-sm font-medium mb-1">Category</label>
-          <input
-            type="text"
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text text-black">Category</span>
+          </label>
+          <select
             name="category"
-            placeholder="Clothing/Footwear/Accessories"
-            className="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300"
-          />
-        </div>
-
-        {/* Sub Category */}
-        <div>
-          <label className="block text-sm font-medium mb-1">Sub Category</label>
-          <input
-            type="text"
-            name="subCategory"
-            placeholder="Jacket/Dress/Shoes/Watches"
-            className="w-full border rounded-lg p-2 focus:ring focus:ring-indigo-300"
-          />
+            className="select select-bordered w-full text-black"
+            required
+          >
+            <option selected value="LIMITED OFFER">
+              Select Category
+            </option>
+            <option value="DRESS">Dress</option>
+            <option value="HANDBAGS">Handbags</option>
+            <option value="SHOES">Shoes</option>
+            <option value="ACCESSORIES">Accessories</option>
+          </select>
         </div>
 
         {/* Gender */}
