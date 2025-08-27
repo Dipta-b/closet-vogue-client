@@ -29,7 +29,7 @@ const DetailsTabPage = () => {
           <p className="text-center text-sm	 font-light">
             Best selling products
           </p>
-          Tab content 1 – {closet.length}
+          Tab content 1 – {closet?.length}
         </div>
 
         <input
@@ -45,7 +45,7 @@ const DetailsTabPage = () => {
           <p className="text-center text-sm	 font-light">
             Best selling products
           </p>
-          Tab content 2 – {closet.length}
+          Tab content 2 – {closet?.length}
         </div>
 
         <input
@@ -61,7 +61,7 @@ const DetailsTabPage = () => {
           <p className="text-center text-sm	 font-light">
             Best selling products
           </p>
-          Tab content 3 – {closet.length}
+          Tab content 3 – {closet?.length}
         </div>
 
         <input
@@ -77,7 +77,7 @@ const DetailsTabPage = () => {
           <p className="text-center text-sm	 font-light">
             Best selling products
           </p>
-          Tab content 4 – {closet.length}
+          Tab content 4 – {closet?.length}
         </div>
       </div>
     </div>
