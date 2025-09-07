@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AddToCartButton from "./shared/AddToCartButton";
 
 const ClosetCard = ({ closet }) => {
   console.log(closet);
@@ -28,6 +29,9 @@ const ClosetCard = ({ closet }) => {
         >
           View Details
         </Link>
+        <AddToCartButton
+          className="bg-gray-400 z-[1-] opacity-0 group-hover:z-20 group-hover:opacity-100 px-3 py-2 mt-3 hover:bg-gray-500 transition-all duration-1000 text-white rounded-md text-[0.9rem]"
+          product={{ productId: closet?._id, name: closet?.name, price: closet?.price, category: closet?.category, color: closet?.color, description: closet?.description, gender: closet?.gender, imageUrl: closet?.imageUrl, productDetails: closet?.productDetails, shortDescription: closet?.shortDescription, sizes: closet?.sizes, subCategory: closet?.subCategory }}></AddToCartButton>
       </div>
 
       {/*  bottom shadow  */}

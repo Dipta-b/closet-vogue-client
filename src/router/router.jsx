@@ -9,6 +9,7 @@ import AllCloset from "../components/pages/AllCloset";
 import ClosetDetailsPage from "../components/pages/ClosetDetailsPage";
 import AdminPanel from "../components/pages/AdminPanel";
 import UpdateRoute from "../components/pages/UpdateRoute";
+import Cart from "../components/pages/Cart";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/closets/${params.id}`),
       },
+      {
+        path: "products/cart",
+        element: <Cart></Cart>,
+
+      }
     ],
   },
 ]);

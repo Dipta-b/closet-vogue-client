@@ -85,12 +85,14 @@ const Navbar = () => {
         <li className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize">
           Pages
         </li>
-        <NavLink
-          className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize"
-          to="/addNewProduct"
-        >
-          Add New Product
-        </NavLink>
+        {
+          isAdmin && (<NavLink
+            className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize"
+            to="/addNewProduct"
+          >
+            Add New Product
+          </NavLink>)
+        }
         {isAdmin && (
           <NavLink
             className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize"
@@ -99,6 +101,10 @@ const Navbar = () => {
             Admin Panel
           </NavLink>
         )}
+
+        <NavLink
+          to="/products/cart"
+        >Cart</NavLink>
       </ul>
 
       {/* Search & Auth Buttons */}
@@ -147,11 +153,10 @@ const Navbar = () => {
 
       {/* Mobile Sidebar */}
       <aside
-        className={`${
-          mobileSidebarOpen
-            ? "translate-x-0 opacity-100 z-20"
-            : "translate-x-[200px] opacity-0 z-[-1]"
-        } md:hidden bg-white boxShadow p-4 text-center absolute dark:bg-slate-700 top-[55px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300`}
+        className={`${mobileSidebarOpen
+          ? "translate-x-0 opacity-100 z-20"
+          : "translate-x-[200px] opacity-0 z-[-1]"
+          } md:hidden bg-white boxShadow p-4 text-center absolute dark:bg-slate-700 top-[55px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300`}
       >
         {/* Add your mobile menu items here (same as above) */}
       </aside>
