@@ -1,22 +1,23 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import useAuth from '../../hooks/useAuth';
-import { Trash2, Plus, Minus } from 'lucide-react';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import { Trash2, Plus, Minus } from "lucide-react";
+import CheckoutFormWrapper from "./CheckOutFormWrapper";
 const Cart = () => {
     const { user } = useAuth();
     const userEmail = user?.email;
     const [cart, setCart] = useState([]);
 
-    // Fetch cart
+    // Fetch cart items
     useEffect(() => {
         if (!userEmail) return;
 
-        axios.get(`http://localhost:5000/products/cart?email=${userEmail}`)
+        axios
+            .get(`http://localhost:5000/products/cart?email=${userEmail}`)
             .then((res) => {
-                const dataWithQty = res.data.map(item => ({
+                const dataWithQty = res.data.map((item) => ({
                     ...item,
-                    quantity: item.quantity || 1
+                    quantity: item.quantity || 1,
                 }));
                 setCart(dataWithQty);
             })
@@ -27,10 +28,11 @@ const Cart = () => {
     const updateQuantity = (id, newQty) => {
         if (newQty < 1) return;
 
-        axios.patch(`http://localhost:5000/products/cart/${id}`, { qty: newQty })
+        axios
+            .patch(`http://localhost:5000/products/cart/${id}`, { qty: newQty })
             .then(() => {
-                setCart(prev =>
-                    prev.map(item =>
+                setCart((prev) =>
+                    prev.map((item) =>
                         item._id === id ? { ...item, quantity: newQty } : item
                     )
                 );
@@ -40,18 +42,26 @@ const Cart = () => {
 
     // Remove item
     const removeItem = (id) => {
-        axios.delete(`http://localhost:5000/products/cart/${id}`)
+        axios
+            .delete(`http://localhost:5000/products/cart/${id}`)
             .then(() => {
-                setCart(prev => prev.filter(item => item._id !== id));
+                setCart((prev) => prev.filter((item) => item._id !== id));
             })
             .catch((err) => console.log(err.message));
     };
 
     // Calculate subtotal
-    const subtotal = cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    const subtotal = cart.reduce(
+        (total, item) => total + item.product.price * item.quantity,
+        0
+    );
+
+    // Show empty cart message
+    if (cart.length === 0)
+        return <div className="p-8 text-center">Your cart is empty</div>;
 
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg p-4">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -67,7 +77,7 @@ const Cart = () => {
                         <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td className="p-4">
                                 <img
-                                    src={item.product.imageUrl || '/placeholder.png'}
+                                    src={item.product.imageUrl || "/placeholder.png"}
                                     className="w-16 md:w-32 max-w-full max-h-full"
                                     alt={item.product.name}
                                 />
@@ -98,7 +108,7 @@ const Cart = () => {
                                 </div>
                             </td>
                             <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-                                ${item.product.price * item.quantity}
+                                ${(item.product.price * item.quantity).toFixed(2)}
                             </td>
                             <td className="px-6 py-4">
                                 <button
@@ -113,7 +123,7 @@ const Cart = () => {
                 </tbody>
             </table>
 
-            {/* Subtotal */}
+            {/* Subtotal & Checkout */}
             <div className="mt-6 flex justify-end">
                 <div className="w-full  bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 border border-gray-200 dark:border-gray-700">
                     <div className="flex justify-between mb-3">
@@ -121,9 +131,10 @@ const Cart = () => {
                         <span className="text-gray-900 dark:text-white font-bold">${subtotal.toFixed(2)}</span>
                     </div>
                     <div className="border-t border-gray-200 dark:border-gray-700 my-3"></div>
-                    <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-200">
-                        Proceed to Checkout
-                    </button>
+                    <h2 className="font-semibold mb-3">Checkout</h2>
+
+                    {/* Stripe Payment */}
+                    <CheckoutFormWrapper price={subtotal} />
                 </div>
             </div>
         </div>
