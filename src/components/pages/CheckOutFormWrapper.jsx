@@ -20,7 +20,7 @@ const CheckoutFormWrapper = ({ price }) => {
         axios
             .post("http://localhost:5000/create-payment-intent", { price })
             .then((res) => {
-                console.log("clientSecret:", res.data.clientSecret);
+
                 setClientSecret(res.data.clientSecret);
             })
             .catch((err) => console.error(err));
@@ -40,7 +40,7 @@ const CheckoutForm = () => {
     const elements = useElements();
     const [isReady, setIsReady] = useState(false);
 
-    // Ensure PaymentElement is mounted
+
     useEffect(() => {
         if (elements?.getElement(PaymentElement)) {
             setIsReady(true);

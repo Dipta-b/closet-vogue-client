@@ -3,7 +3,7 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../components/pages/Home";
 import SignIn from "../components/pages/SignIn";
 import Register from "../components/pages/Register";
-import SignInWithPhoneNumber from "../components/pages/signInWithPhoneNumber";
+// import SignInWithPhoneNumber from "../components/pages/signInWithPhoneNumber";
 import AddNewProduct from "../components/pages/AddNewProduct";
 import AllCloset from "../components/pages/AllCloset";
 import ClosetDetailsPage from "../components/pages/ClosetDetailsPage";
@@ -28,10 +28,10 @@ const router = createBrowserRouter([
         path: "register",
         element: <Register></Register>,
       },
-      {
-        path: "signInByPhoneNumber",
-        element: <SignInWithPhoneNumber></SignInWithPhoneNumber>,
-      },
+      // {
+      //   path: "signInByPhoneNumber",
+      //   element: <SignInWithPhoneNumber></SignInWithPhoneNumber>,
+      // },
       {
         path: "addNewProduct",
         element: <AddNewProduct></AddNewProduct>,
