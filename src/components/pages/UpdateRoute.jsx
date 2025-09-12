@@ -11,7 +11,7 @@ const UpdateRoute = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const product = Object.fromEntries(formData);
-    axios.put(`http://localhost:5000/closets/${id}`, product).then((res) => {
+    axios.put(`https://closet-vogue-server.vercel.app/closets/${id}`, product).then((res) => {
       if (res.data.modifiedCount) {
         Swal.fire({
           title: "Closet updated Successfully!",

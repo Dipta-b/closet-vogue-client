@@ -18,7 +18,7 @@ const CheckoutFormWrapper = ({ price }) => {
 
     useEffect(() => {
         axios
-            .post("http://localhost:5000/create-payment-intent", { price })
+            .post("https://closet-vogue-server.vercel.app/create-payment-intent", { price })
             .then((res) => {
 
                 setClientSecret(res.data.clientSecret);

@@ -19,7 +19,7 @@ const AdminPanel = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/closets/${id}`);
+        await axios.delete(`https://closet-vogue-server.vercel.app/closets/${id}`);
         Swal.fire("Deleted!", "Your watch has been deleted.", "success");
         setClosets((prev) => prev.filter((item) => item._id !== id));
       } catch (error) {

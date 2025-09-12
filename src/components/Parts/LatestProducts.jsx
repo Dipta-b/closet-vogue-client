@@ -17,7 +17,7 @@ const LatestProducts = () => {
     setFade(false); // fade-out
 
     axios
-      .get(`http://localhost:5000/closets/category/${category}`)
+      .get(`https://closet-vogue-server.vercel.app/closets/category/${category}`)
       .then((res) => {
         setClosets(res.data);
         setCurrent(0); // reset carousel

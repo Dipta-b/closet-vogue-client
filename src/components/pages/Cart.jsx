@@ -13,7 +13,7 @@ const Cart = () => {
         if (!userEmail) return;
 
         axios
-            .get(`http://localhost:5000/products/cart?email=${userEmail}`)
+            .get(`https://closet-vogue-server.vercel.app/products/cart?email=${userEmail}`)
             .then((res) => {
                 const dataWithQty = res.data.map((item) => ({
                     ...item,
@@ -29,7 +29,7 @@ const Cart = () => {
         if (newQty < 1) return;
 
         axios
-            .patch(`http://localhost:5000/products/cart/${id}`, { qty: newQty })
+            .patch(`https://closet-vogue-server.vercel.app/products/cart/${id}`, { qty: newQty })
             .then(() => {
                 setCart((prev) =>
                     prev.map((item) =>
@@ -43,7 +43,7 @@ const Cart = () => {
     // Remove item
     const removeItem = (id) => {
         axios
-            .delete(`http://localhost:5000/products/cart/${id}`)
+            .delete(`https://closet-vogue-server.vercel.app/products/cart/${id}`)
             .then(() => {
                 setCart((prev) => prev.filter((item) => item._id !== id));
             })

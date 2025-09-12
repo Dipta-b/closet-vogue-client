@@ -10,7 +10,7 @@ const AddToCartButton = ({ product }) => {
             alert("Please log in to add items to your cart.");
         }
         try {
-            await axios.post("http://localhost:5000/products/cart", {
+            await axios.post("https://closet-vogue-server.vercel.app/products/cart", {
                 email,
                 product,
             });

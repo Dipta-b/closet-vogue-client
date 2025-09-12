@@ -39,24 +39,24 @@ const router = createBrowserRouter([
       {
         path: "allCloset",
         element: <AllCloset></AllCloset>,
-        loader: () => fetch("http://localhost:5000/closets"),
+        loader: () => fetch("https://closet-vogue-server.vercel.app/closets"),
       },
       {
         path: "allCloset/closets/:id",
         element: <ClosetDetailsPage></ClosetDetailsPage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/closets/${params.id}`),
+          fetch(`https://closet-vogue-server.vercel.app/closets/${params.id}`),
       },
       {
         path: "adminPanel",
         element: <AdminPanel></AdminPanel>,
-        loader: () => fetch("http://localhost:5000/closets"),
+        loader: () => fetch("https://closet-vogue-server.vercel.app/closets"),
       },
       {
         path: "update/:id",
         element: <UpdateRoute></UpdateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/closets/${params.id}`),
+          fetch(`https://closet-vogue-server.vercel.app/closets/${params.id}`),
       },
       {
         path: "products/cart",

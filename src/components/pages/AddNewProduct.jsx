@@ -11,7 +11,7 @@ const AddNewProduct = () => {
     const product = Object.fromEntries(formData);
 
     axios
-      .post("http://localhost:5000/closets", product)
+      .post("https://closet-vogue-server.vercel.app/closets", product)
       .then((result) => {
         console.log(result.data);
         if (result.data.acknowledged) {
