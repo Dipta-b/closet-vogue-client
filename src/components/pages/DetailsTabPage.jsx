@@ -8,7 +8,7 @@ const DetailsTabPage = () => {
   useEffect(() => {
     setCloset([]);
 
-    axios.get("https://closet-vogue-server.vercel.app/closets").then((res) => {
+    axios.get("http://localhost:5000/closets").then((res) => {
       setCloset(res.data);
     });
   }, [activeTab]);

@@ -6,7 +6,7 @@ const OurProducts = () => {
   const [clothes, setClothes] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    axios.get("https://closet-vogue-server.vercel.app/closets?limit=4").then((res) => {
+    axios.get("http://localhost:5000/closets?limit=4").then((res) => {
       setClothes(res.data);
       setLoading(false);
     });
