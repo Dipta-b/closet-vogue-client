@@ -9,9 +9,8 @@ import {
 import axios from "axios";
 
 // Your Stripe publishable key
-const stripePromise = loadStripe(
-    "pk_test_51S5nG2EPkiGkY9aR6xsBXFVVpx2SyQX2M4403YGZsh3lkBFhRLks09g6zWTmlqKeoSIhPMTRZVce7JYuHaXFsjgX00tA7wYBi1"
-);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
 
 const CheckoutFormWrapper = ({ price }) => {
     const [clientSecret, setClientSecret] = useState("");
